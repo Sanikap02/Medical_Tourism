@@ -13,10 +13,11 @@ const Footer = () => {
         {/* Logo + About */}
         <div>
           <div className="flex items-center mb-4">
-            <div className="w-10 h-10 rounded-full bg-[#d6e4f0] flex items-center justify-center mr-2 shadow-md">
-              <span className="text-xs font-bold text-[#174e6c]">MC</span>
-            </div>
-            <span className="font-extrabold text-xl">MediConnect</span>
+            <img
+            src="https://res.cloudinary.com/dirkoc1m3/image/upload/v1747071611/MeditripGlobal_Color_vs42jq.svg" // <-- Replace with your actual SVG path
+            alt="MediConnect Logo"
+            className="w-40 h-auto mr-3"
+            />
           </div>
           <p className="text-sm text-gray-200">
             Bridging patients, hospitals, and healthcare professionals for a

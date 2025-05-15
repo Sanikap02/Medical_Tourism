@@ -45,12 +45,13 @@ const Navbar = ({ user, handleLogout }) => {
       <div className="flex items-center justify-between py-4 px-6 md:px-12 max-w-7xl mx-auto">
         {/* Logo Section */}
         <Link to="/" className="flex items-center">
-          <div className="w-10 h-10 rounded-full bg-[#d6e4f0] flex items-center justify-center mr-3 shadow-md">
-            <span className="text-xs font-bold text-[#174e6c]">Logo</span>
+          <div className="flex items-center">
+            <img
+            src="https://res.cloudinary.com/dirkoc1m3/image/upload/v1747071611/MeditripGlobal_Color_vs42jq.svg" // <-- Replace with your actual SVG path
+            alt="MediConnect Logo"
+            className="w-40 h-auto mr-3"
+            />
           </div>
-          <span className="font-extrabold text-2xl text-[#174e6c]">
-            MediConnect
-          </span>
         </Link>
 
         {/* Desktop Links */}

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PatientLoginForm from "./PatientLoginForm";
 import ProviderLoginForm from "./ProviderLoginForm";
+import { useNavigate } from "react-router-dom"; // ✅ added
 
 const Login = () => {
   const [role, setRole] = useState(null);
+  const navigate = useNavigate(); // ✅ added
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-br from-[#f4f9fc] via-[#dbe6f0] to-[#e2f0fb] pt-16">
@@ -45,7 +47,9 @@ const Login = () => {
           )}
 
           {/* Form Rendering Based on Role */}
-          {role === "patient" && <PatientLoginForm />}
+          {role === "patient" && (
+            <PatientLoginForm navigate={navigate} setRole={setRole} />
+          )}
           {role === "provider" && <ProviderLoginForm />}
 
           {/* Back to Role Selection */}

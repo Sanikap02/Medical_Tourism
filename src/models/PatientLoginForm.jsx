@@ -1,51 +1,50 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const PatientLoginForm = () => {
+const PatientLoginForm = ({ navigate, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    // Mock authentication logic
-    const user = {
-      email,
-      role: "patient",
-    };
+    if (email === "try@gmail.com" && password === "try@1") {
+      const user = { email, role: "patient" };
+      localStorage.setItem("user", JSON.stringify(user));
 
-    localStorage.setItem("user", JSON.stringify(user));
-    navigate("/patient-dashboard");
+      // Optional: store email separately if needed later
+      localStorage.setItem("email", email);
+
+      setError("");
+      setRole(null); // reset role selection state
+      navigate("/patient-homepage");
+    } else {
+      setError("Invalid email or password.");
+    }
   };
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit}>
-      <div>
-        <label className="block text-gray-700 mb-1">Email</label>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="w-full px-4 py-2 rounded-lg border shadow focus:outline-none focus:ring-2 focus:ring-[#1e5b94]"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label className="block text-gray-700 mb-1">Password</label>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          className="w-full px-4 py-2 rounded-lg border shadow focus:outline-none focus:ring-2 focus:ring-[#1e5b94]"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+    <form onSubmit={handleLogin} className="space-y-4">
+      <input
+        type="email"
+        placeholder="Email"
+        className="w-full p-2 border rounded"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        className="w-full p-2 border rounded"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      {error && <p className="text-red-500 text-sm">{error}</p>}
       <button
         type="submit"
-        className="w-full bg-[#1e5b94] text-white py-2 sm:py-3 rounded-lg hover:bg-[#0d3b56] shadow-lg transform hover:translate-y-[-2px] transition duration-300"
+        className="w-full bg-[#1e5b94] text-white py-2 rounded hover:bg-[#0d3b56]"
       >
         Login
       </button>
