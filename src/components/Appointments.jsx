@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
-import appointmentsData from "../assets/data/appointments.json";
+import appointmentsData from "../assets/data/Appointments.json";
 import hospitalsData from "../assets/data/Hospitals-data.json";
 
 const Appointments = () => {
